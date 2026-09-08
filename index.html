@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next-Rx — Never miss a dose</title>
+<meta name="description" content="Medication reminders that still arrive when you have not opened the app in weeks.">
+<link rel="icon" href="icon.png">
+<meta property="og:title" content="Next-Rx — Never miss a dose">
+<meta property="og:description" content="Medication reminders that still arrive when you have not opened the app in weeks.">
+<meta property="og:image" content="icon.png">
+<style>
+  :root {
+    --bg:#ffffff; --fg:#002460; --muted:#586c88; --accent:#0b6fd4;
+    --rule:#d3e0ee; --card:#f1f5fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#070e1a; --fg:#e9f1fa; --muted:#9dafc7; --accent:#3b9bf0;
+            --rule:#28374d; --card:#131d2e; }
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; background:var(--bg); color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    display:flex; flex-direction:column;
+  }
+  main {
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    max-width:40rem; margin:0 auto; padding:4rem 1.5rem 3rem; text-align:center;
+  }
+  .mark { width:132px; height:auto; margin:0 auto 1.75rem; }
+  h1 { font-size:clamp(2.1rem,7vw,3rem); margin:0 0 .4rem; letter-spacing:-.03em; line-height:1.1; }
+  h1 .rx { color:var(--accent); }
+  .tagline { font-size:1.15rem; color:var(--muted); margin:0 0 2.5rem; }
+  .pitch { font-size:1.05rem; margin:0 0 1rem; }
+  .pitch strong { font-weight:600; }
+  .note {
+    display:inline-block; margin-top:2rem; padding:.5rem 1rem; border-radius:999px;
+    background:var(--card); border:1px solid var(--rule);
+    color:var(--muted); font-size:.9rem; font-weight:600;
+  }
+  ul.points {
+    list-style:none; padding:0; margin:2.5rem 0 0; text-align:left;
+    display:grid; gap:1rem;
+  }
+  ul.points li {
+    background:var(--card); border:1px solid var(--rule); border-radius:14px;
+    padding:1rem 1.15rem;
+  }
+  ul.points b { display:block; margin-bottom:.15rem; }
+  ul.points span { color:var(--muted); font-size:.95rem; }
+  footer {
+    border-top:1px solid var(--rule); padding:1.5rem;
+    display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+    color:var(--muted); font-size:.9rem;
+  }
+  footer a { color:var(--accent); text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<main>
+  <img class="mark" src="mark.png" alt="">
+  <h1>Next<span class="rx">-Rx</span></h1>
+  <p class="tagline">Never miss a dose.</p>
+
+  <p class="pitch">
+    Medication reminders that still arrive when you <strong>haven't opened the app in weeks</strong>.
+  </p>
+
+  <ul class="points">
+    <li>
+      <b>Built for an app you forget to open</b>
+      <span>The schedule is handed to your phone in advance, so reminders keep arriving with no network and no app launch.</span>
+    </li>
+    <li>
+      <b>Done from the notification</b>
+      <span>One tap records the dose and queues the next. Snooze keeps the reminder in place so it isn't forgotten.</span>
+    </li>
+    <li>
+      <b>Your medication data stays on your phone</b>
+      <span>Names, schedules and dose history are stored on the device and never uploaded.</span>
+    </li>
+  </ul>
+
+  <p><span class="note">Coming soon to Android and iOS</span></p>
+</main>
+
+<footer>
+  <a href="mailto:hello@next-rx.com">Contact</a>
+  <a href="/privacy">Privacy policy</a>
+</footer>
+</body>
+</html>

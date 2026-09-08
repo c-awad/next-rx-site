@@ -1,0 +1,49 @@
+name: Deploy site
+
+# Publishes site/ to GitHub Pages whenever main changes, but only when the
+# site itself changed -- app commits should not trigger a deploy.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let an in-flight deploy finish rather than cancelling it midway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify the pages we promise actually exist
+        run: |
+          test -f index.html || { echo "index.html missing"; exit 1; }
+          test -f privacy.html || { echo "privacy.html missing"; exit 1; }
+          test -f CNAME || { echo "CNAME missing — custom domain would be dropped"; exit 1; }
+
+      # Play requires a working privacy policy URL, and /privacy is what is
+      # declared in the store listing. Serve it without the .html extension.
+      - name: Publish /privacy as a clean URL
+        run: |
+          mkdir -p privacy
+          cp privacy.html privacy/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
