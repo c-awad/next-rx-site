@@ -32,7 +32,7 @@ jobs:
         run: |
           test -f index.html || { echo "index.html missing"; exit 1; }
           test -f privacy.html || { echo "privacy.html missing"; exit 1; }
-          test -f CNAME || { echo "CNAME missing — custom domain would be dropped"; exit 1; }
+          # No CNAME: served on github.io until a custom domain is pointed here.
 
       # Play requires a working privacy policy URL, and /privacy is what is
       # declared in the store listing. Serve it without the .html extension.
